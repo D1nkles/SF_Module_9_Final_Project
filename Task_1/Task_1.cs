@@ -1,26 +1,33 @@
-﻿class UserInputException : Exception 
+﻿namespace Task_1
 {
-    
-}
-
-class Program 
-{
-    static void Main(string[] args) 
+    public class UserInputException : Exception
     {
-        Exception[] exceptions = {new FormatException(), new OverflowException(), new UserInputException(), new KeyNotFoundException(), new NotImplementedException()};
-        for (int i = 0; i < exceptions.Length;)
+        public override string Message => "Вы ввели число, не соответсвующее никакому номеру команды.";
+        public UserInputException() 
         {
-            try
+            
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Exception[] exceptions = { new FormatException(), new OverflowException(), new UserInputException(), new KeyNotFoundException(), new NotImplementedException() };
+            for (int i = 0; i < exceptions.Length;)
             {
-                throw exceptions[i];
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            finally 
-            {
-                i++;
+                try
+                {
+                    throw exceptions[i];
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                finally
+                {
+                    i++;
+                }
             }
         }
     }
